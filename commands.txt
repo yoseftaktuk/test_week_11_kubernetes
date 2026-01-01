@@ -1,0 +1,51 @@
+איתחול git על הפרויקט
+git init
+
+מעקב אחר הקבצים
+git add .
+
+מעבר לענף בשם dockerfile
+git checkout -b dockerfile
+
+הפקודות בקובץ הדוקר לפקודות בcli
+CMD ["streamlit", "run", "main.py" ,"--server.port", "8080" ,"--server.address=0.0.0.0"]
+
+יצירת התמונה
+docker build . -t my_app 
+הרצת הקונטינר
+docker run  -p 8080 -t my_app:latest
+הסטטוס
+statos:Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+  You can now view your Streamlit app in your browser.
+  URL: http://0.0.0.0:8080
+
+בניית תמונה לשליחה לdocker hub
+docker build . -t taktuk/my_app  
+
+העלעת הקובץ לhub
+docker push taktuk/my_app
+
+מעבר לענף חדש
+git checkout -b pod_file
+
+מעבר לענף חדש 
+git checkout -b sevice_file
+
+commit
+git commit -m "Building the service.yaml file"
+
+הפעלת minikube
+minikube start
+
+הפעלת הpod
+ kubectl apply -f pod.yaml
+
+יצירת הservice
+kubectl apply -f service.yaml 
+
+פתיחת האפליקצייה בweb 
+minikube service streamlit-service
+
+בדיקת סטטוס
+minikube kubectl -- get pods 
+minikube kubectl -- get service 
